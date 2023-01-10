@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}    
+    <div class="header-box">
+        <a class="red-button" href="{% url 'login_view' %}">Back</a>
+        <div class="header-title-box">
+            <p class="authentication-title">Register</p>
+        </div>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+        
+    <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="blue-button">Register</button>
+    </form>
+{% endblock %}

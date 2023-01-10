@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}    
+    <div class="header-box">
+        <div class="header-title-box">
+            <p class="authentication-title">Login</p>
+        </div>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'login_view' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="blue-button">Login</button>
+    </form>
+    <p>Don't have an account? <a class="register-here" href="{% url 'register' %}">Register here</a></p>
+{% endblock %}

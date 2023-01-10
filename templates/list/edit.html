@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% if messages %}
+        <ul class="message">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="{% url 'edit' task.id %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-box">
+            <a href="{% url 'home' %}" class="red-button">Cancel</a>
+            <button type="submit" class="blue-button">Save</button>
+        </div>
+    </form>
+{% endblock %}

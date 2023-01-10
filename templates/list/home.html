@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="header-bar">
+        <div class="header-logout-box">
+            <a class="header-logout-text" href="{% url 'logout' %}">Logout</a>  
+        </div>
+        <div class="header-title-box">
+            <a href="{% url 'home' %}" class="header-title-text">{{ request.user|title }}'s list</a>
+        </div>
+        <div class="header-content-box">                      
+            <form action="{% url 'search' %}" method="GET" class="search-bar">                    
+                <input type="submit" class="blue-button" value="&#x1F50E;&#xFE0E;">
+                <input type="text" name="search-area" value="{{ search_input }}">                               
+            </form>                        
+            <div>       
+                <a class="header-content-add-item" href="{% url 'create' %}">New task</a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        {% if messages %}
+        <ul class="message">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if tasks %}
+            {% for task in tasks %}
+                {% if task.is_completed %}
+                    <div class="task-box">
+                        <div class="task-title">
+                            <a class="task-complete-icon" href="{% url 'complete' task.id %}"></a>                    
+                            <a class="task-text-complete line-strikethrough" href="{% url 'view' task.id %}"><span class="line-through">{{ task.title }}</span></a>
+                        </div>
+                        <a class="task-delete" href="{% url 'delete' task.id %}">&#x2716</a>                     
+                    </div>
+                {% else %}
+                <div class="task-box">
+                    <div class="task-title">
+                        <a class="task-incomplete-icon" href="{% url 'complete' task.id %}"></a>                    
+                        <a class="task-text" href="{% url 'view' task.id %}">{{ task.title }}</a>
+                    </div>
+                    <a class="task-delete" href="{% url 'delete' task.id %}">&#x2716</a>                     
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p class="no-tasks">no tasks yet</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% if messages %}
+        <ul class="message">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="header-bar">
+        <div class="header-content-box">
+            <a href="{% url 'home' %}" class="red-button">Back</a>
+            <a href="{% url 'edit' task.id %}" class="blue-button">Edit</a>
+        </div>
+    </div>
+    <div class="task-box-view">
+        <p class="task-title-view">{{ task.title }}</p>
+    </div>
+    <p class="task-text-view">{{ task.description }}</p>        
+{% endblock %}
