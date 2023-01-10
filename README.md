@@ -20,13 +20,14 @@ Web app using Django Python, this blog uses PostgreSQL as the database, for the 
 - Checkmarks for the complete and incomplete tasks
 
 ## How to use:
-1. Install the following app in your terminal
+1. Clone the repository link
+2. Install the following app in your terminal
 - ```pip install django```
-2. Make sure you´re on the main folder of the project in your terminal (the one that contains the README file)
-3. Execute the following command:
+3. Make sure you´re on the main folder of the project in your terminal (the one that contains the README file)
+4. Execute the following command:
 ```python manage.py runserver```</br>
 (If there is an error in this step, install the apps the terminal needs)
-4. Paste the following URL in your browser and you´re good to go http://localhost:8000/
+5. Paste the following URL in your browser and you´re good to go http://localhost:8000/
 
 ## Credits:
 Julio Salazar
