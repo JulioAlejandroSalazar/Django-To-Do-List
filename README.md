@@ -18,6 +18,7 @@ Web app using Django Python, this blog uses PostgreSQL as the database, for the 
 - Authentication system
 - CRUD for the tasks
 - Checkmarks for the complete and incomplete tasks
+- Search bar
 
 ## How to use:
 1. Clone the repository link
